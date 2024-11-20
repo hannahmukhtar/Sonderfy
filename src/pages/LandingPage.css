@@ -1,0 +1,104 @@
+/* General body styles */
+body {
+  background-color: #292222; /* Page background */
+  font-family: 'Fira Code', monospace; /* Default font */
+  color: #EDE8DD; /* Font color */
+  margin: 0px;
+  padding: 0;
+  display: flex; /* Ensure the body uses flexbox */
+  justify-content: center; /* Horizontally center the content */
+  align-items: flex-start; /* Align content to the top initially */
+  height: 100vh; /* Full height to center the content */
+  flex-direction: column; /* Allow stacking of elements vertically */
+}
+
+/* Landing page container styles */
+.landing-page {
+  text-align: center; /* Ensure text inside is centered */
+  width: 100%;
+  max-width: 800px; /* Optional: Set max width to prevent it from getting too wide */
+}
+
+/* Title */
+.title {
+  font-family: 'Bigshot One', sans-serif;
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-top: -100px; /* Reduced margin-top to bring the title closer to the top */
+  text-align: center;
+}
+
+/* Typing effect styles */
+.typing-effect {
+  font-family: 'Fira Code', monospace;
+  font-size: 40px;
+  color: #EDE8DD;
+  margin-top: 15px; /* Reduced margin-top to make the typing effect closer to the title */
+  text-align: center;
+  margin-left: 150px;
+  margin-right: 150px;
+  max-width: 800px;
+}
+
+/* Subtext styling */
+.subtext {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  color: #EDE8DD;
+  margin: 20px 10px;
+  text-align: center;
+}
+
+/* Icon container styles */
+.icon-container {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  gap: 30px;
+  margin-top: 30px; /* Reduced margin-top to bring icons closer */
+}
+
+/* Icon styling */
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Spotify button styling */
+.spotify-button {
+  display: block;
+  background-color: #1DB954; /* Spotify green */
+  color: #F0F0F0;
+  padding: 15px 30px;
+  text-align: center;
+  border-radius: 25px;
+  width: 200px;
+  margin: 40px auto; /* Center the button horizontally */
+  font-size: 16px;
+  font-family: 'Fira Code', monospace;
+  text-decoration: none;
+}
+
+/* Example text styling */
+.example-text {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Footer styles */
+.footer {
+  font-size: 10px;
+  color: #EDE8DD;
+  margin-top: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+/* Linktree icon */
+.linktree-icon {
+  width: 150px;
+  height: 25px;
+  margin-top: 10px;
+}

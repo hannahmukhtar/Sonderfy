@@ -1,0 +1,43 @@
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #292222; 
+  color: #EDE8DD; 
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+@keyframes blink {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: currentColor;
+  }
+}
+

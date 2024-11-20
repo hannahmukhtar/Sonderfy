@@ -1,0 +1,145 @@
+.playlist-container {
+  background-color: #292222;
+  color: #ede8dd;
+  font-family: "Fira Code", monospace;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0;
+  margin-top: 200px;
+}
+
+.title {
+  font-family: "Bigshot One", sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.song-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.song-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.song-row:hover {
+  transform: translateY(-5px);
+}
+
+  
+  .song-album {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .song-name,
+  .song-artist {
+    font-size: 14px;
+  }
+  
+  .remove-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+  
+  .refresh-button {
+    background-color: #1db954;
+    color: #ede8dd;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .footer {
+    font-size: 10px;
+    color: #EDE8DD;
+    margin-top: 40px;
+    text-align: center; /* Center the text inside footer */
+    width: 100%; /* Ensure footer spans full width */
+    display: flex; /* Flex container for footer */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Stack elements vertically */
+    margin-top: auto; /* Push the footer to the bottom of the page */
+}
+
+.footer .linktree-icon {
+    width: 150px;
+    height: 25px;
+    margin-top: 10px;
+    display: block; /* Ensure the linktree icon behaves as a block element */
+    margin-left: auto; /* Center the linktree icon horizontally */
+    margin-right: auto; /* Center the linktree icon horizontally */
+}
+
+.logout-button {
+    background-color: #ede8dd;  /* or any color you prefer */
+    color: black;
+    padding: 8px 16px;
+    border: none;
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;  /* adds space between share and logout buttons */
+  }
+  
+  .logout-button:hover {
+    background-color: #dbd6ca;
+  }
+
+  .error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fdeaea;
+    border-radius: 4px;
+  }
+
+  .share-link-container {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
+  .share-link-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .copy-link-button {
+    padding: 8px 16px;
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
