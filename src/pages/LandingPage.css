@@ -1,46 +1,41 @@
-/* General body styles */
 body {
-  background-color: #292222; /* Page background */
-  font-family: 'Fira Code', monospace; /* Default font */
-  color: #EDE8DD; /* Font color */
+  background-color: #292222; 
+  font-family: 'Fira Code', monospace; 
+  color: #EDE8DD; 
   margin: 0px;
   padding: 0;
-  display: flex; /* Ensure the body uses flexbox */
-  justify-content: center; /* Horizontally center the content */
-  align-items: flex-start; /* Align content to the top initially */
-  height: 100vh; /* Full height to center the content */
-  flex-direction: column; /* Allow stacking of elements vertically */
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-start; 
+  height: 100vh; 
+  flex-direction: column; 
 }
 
-/* Landing page container styles */
 .landing-page {
-  text-align: center; /* Ensure text inside is centered */
+  text-align: center; 
   width: 100%;
-  max-width: 800px; /* Optional: Set max width to prevent it from getting too wide */
+  max-width: 800px; 
 }
 
-/* Title */
 .title {
   font-family: 'Bigshot One', sans-serif;
   font-size: 24px;
   color: #FFFFFF;
-  margin-top: -100px; /* Reduced margin-top to bring the title closer to the top */
+  margin-top: -100px; 
   text-align: center;
 }
 
-/* Typing effect styles */
 .typing-effect {
   font-family: 'Fira Code', monospace;
   font-size: 40px;
   color: #EDE8DD;
-  margin-top: 15px; /* Reduced margin-top to make the typing effect closer to the title */
+  margin-top: 15px; 
   text-align: center;
   margin-left: 150px;
   margin-right: 150px;
   max-width: 800px;
 }
 
-/* Subtext styling */
 .subtext {
   font-family: 'Fira Code', monospace;
   font-size: 14px;
@@ -49,36 +44,32 @@ body {
   text-align: center;
 }
 
-/* Icon container styles */
 .icon-container {
   display: flex;
-  justify-content: center; /* Center icons horizontally */
+  justify-content: center; 
   gap: 30px;
-  margin-top: 30px; /* Reduced margin-top to bring icons closer */
+  margin-top: 30px; 
 }
 
-/* Icon styling */
 .icon {
   width: 50px;
   height: 50px;
 }
 
-/* Spotify button styling */
 .spotify-button {
   display: block;
-  background-color: #1DB954; /* Spotify green */
+  background-color: #1DB954; 
   color: #F0F0F0;
   padding: 15px 30px;
   text-align: center;
   border-radius: 25px;
   width: 200px;
-  margin: 40px auto; /* Center the button horizontally */
+  margin: 40px auto; 
   font-size: 16px;
   font-family: 'Fira Code', monospace;
   text-decoration: none;
 }
 
-/* Example text styling */
 .example-text {
   font-family: 'Fira Code', monospace;
   font-size: 14px;
@@ -87,7 +78,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* Footer styles */
 .footer {
   font-size: 10px;
   color: #EDE8DD;
@@ -96,7 +86,6 @@ body {
   text-align: center;
 }
 
-/* Linktree icon */
 .linktree-icon {
   width: 150px;
   height: 25px;

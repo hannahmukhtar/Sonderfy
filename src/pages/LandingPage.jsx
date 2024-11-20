@@ -45,17 +45,13 @@ const LandingPage = () => {
 
   return (
     <div>
-      {/* Title */}
       <div className="title">Sonderfy</div>
 
-      {/* Typing Effect */}
       <div className="typing-effect">{displayText}</div>
-      {/* Subtext */}
       <div className="subtext">
         After connecting to your account, click an activity to receive a personalized activity-specific playlist.
       </div>
 
-      {/* Icons for Activities */}
       <div className="icon-container">
         <FontAwesomeIcon icon={faGlassCheers} className="icon" />
         <FontAwesomeIcon icon={faBookOpen} className="icon" />
@@ -63,19 +59,16 @@ const LandingPage = () => {
         <FontAwesomeIcon icon={faDumbbell} className="icon" />
       </div>
 
-      {/* Spotify Login Button */}
       
       <button onClick={handleLogin} className="spotify-button">
         <FaSpotify /> Login with Spotify
       </button>
        
 
-      {/* Example Text */}
       <div className="example-text">
         Example: Studying, Working Out, Vibe, Relax, Party, etc
       </div>
 
-      {/* Footer */}
       <div className="footer">
         Coded by Hannah Mukhtar 모ฅ(•- •マ ྀི
         <br />

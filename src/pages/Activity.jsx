@@ -15,7 +15,7 @@ const Activity = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       if (!token) {
-        return; // No token, early return
+        return; 
       }
       const response = await fetch('https://api.spotify.com/v1/me', {
         headers: {
@@ -24,13 +24,12 @@ const Activity = () => {
       });
 
       if (response.status === 401) {
-        // Token expired or invalid, handle re-login
         alert('Token expired, please log in again.');
-        localStorage.removeItem('spotify_access_token'); // Clear the invalid token
+        localStorage.removeItem('spotify_access_token'); 
         return;
       }
       const data = await response.json();
-      setUsername(data.display_name); // Set the username state
+      setUsername(data.display_name); 
     };
 
     fetchUserDetails();
@@ -181,9 +180,9 @@ const [displayText, setDisplayText] = useState('');
     
     navigate("/playlist", {
       state: {
-        activity, // Activity name (e.g., "study")
-        genres: selectedGenres, // Genres associated with the activity
-        username, // Spotify username
+        activity, 
+        genres: selectedGenres, 
+        username, 
       },
     });
   };

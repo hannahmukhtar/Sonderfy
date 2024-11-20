@@ -79,26 +79,26 @@
     font-size: 10px;
     color: #EDE8DD;
     margin-top: 40px;
-    text-align: center; /* Center the text inside footer */
-    width: 100%; /* Ensure footer spans full width */
-    display: flex; /* Flex container for footer */
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    flex-direction: column; /* Stack elements vertically */
-    margin-top: auto; /* Push the footer to the bottom of the page */
+    text-align: center; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    margin-top: auto; 
 }
 
 .footer .linktree-icon {
     width: 150px;
     height: 25px;
     margin-top: 10px;
-    display: block; /* Ensure the linktree icon behaves as a block element */
-    margin-left: auto; /* Center the linktree icon horizontally */
-    margin-right: auto; /* Center the linktree icon horizontally */
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .logout-button {
-    background-color: #ede8dd;  /* or any color you prefer */
+    background-color: #ede8dd;  
     color: black;
     padding: 8px 16px;
     border: none;
@@ -106,7 +106,7 @@
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px;  /* adds space between share and logout buttons */
+    margin-left: 10px;  
   }
   
   .logout-button:hover {

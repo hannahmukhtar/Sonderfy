@@ -1,39 +1,35 @@
-/* General body styles */
 body {
-    background-color: #292222; /* Page background */
-    font-family: 'Fira Code', monospace; /* Default font */
-    color: #EDE8DD; /* Font color */
+    background-color: #292222; 
+    font-family: 'Fira Code', monospace; 
+    color: #EDE8DD;
     margin: 0px;
     padding: 0;
-    display: flex; /* Ensure the body uses flexbox */
-    justify-content: center; /* Horizontally center the content */
-    align-items: flex-start; /* Align content to the top initially */
-    height: 100vh; /* Full height to center the content */
-    flex-direction: column; /* Allow stacking of elements vertically */
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    height: 100vh; 
+    flex-direction: column; 
 }
 
-/* Landing page container styles */
 .landing-page {
-    text-align: center; /* Ensure text inside is centered */
+    text-align: center; 
     width: 100%;
-    max-width: 800px; /* Optional: Set max width to prevent it from getting too wide */
+    max-width: 800px; 
 }
 
-/* Title */
 .title {
     font-family: 'Bigshot One', sans-serif;
     font-size: 24px;
     color: #FFFFFF;
-    margin-top: 80px; /* Reduced margin-top to bring the title closer to the top */
+    margin-top: 80px; 
     text-align: center;
 }
 
-/* Typing effect styles */
 .typing-effect {
     font-family: 'Fira Code', monospace;
     font-size: 40px;
     color: #EDE8DD;
-    margin-top: 15px; /* Reduced margin-top to make the typing effect closer to the title */
+    margin-top: 15px; 
     text-align: center;
     margin-left: 150px;
     margin-right: 150px;
@@ -42,13 +38,12 @@ body {
 
 .button-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-gap: 80px; /* Space between buttons */
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 80px; 
     justify-items: center;
     margin-top: 60px;
 }
 
-/* Individual button item styles */
 .button-item {
     text-align: center;
     align-items: center;
@@ -83,20 +78,20 @@ body {
     font-size: 10px;
     color: #EDE8DD;
     margin-top: 40px;
-    text-align: center; /* Center the text inside footer */
-    width: 100%; /* Ensure footer spans full width */
-    display: flex; /* Flex container for footer */
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    flex-direction: column; /* Stack elements vertically */
-    margin-top: auto; /* Push the footer to the bottom of the page */
+    text-align: center; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    margin-top: auto; 
 }
 
 .footer .linktree-icon {
     width: 150px;
     height: 25px;
     margin-top: 10px;
-    display: block; /* Ensure the linktree icon behaves as a block element */
-    margin-left: auto; /* Center the linktree icon horizontally */
-    margin-right: auto; /* Center the linktree icon horizontally */
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
 }

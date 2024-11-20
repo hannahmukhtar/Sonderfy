@@ -19,7 +19,6 @@ const Playlist = () => {
   const [playlistId, setPlaylistId] = useState(null);
   const [shareLink, setShareLink] = useState(null);
 
-  // Function to get audio features based on activity
   const getAudioFeatures = (activity) => {
     switch (activity) {
       case 'study':
@@ -76,7 +75,6 @@ const Playlist = () => {
     }
   };
 
-  // Function to test token validity
   const testToken = async () => {
     try {
       const response = await fetch("https://api.spotify.com/v1/me", {
@@ -91,7 +89,6 @@ const Playlist = () => {
     }
   };
 
-  // Enhanced top artists fetch with multiple time ranges
   const fetchTopArtists = async () => {
     try {
       const timeRanges = ['short_term', 'medium_term', 'long_term'];
@@ -106,7 +103,6 @@ const Playlist = () => {
         )
       );
 
-      // Combine and deduplicate artists
       const uniqueArtists = new Set();
       artists.forEach(response => {
         response.items?.forEach(artist => uniqueArtists.add(artist.id));
@@ -122,7 +118,6 @@ const Playlist = () => {
     }
   };
 
-  // Enhanced top tracks fetch with multiple time ranges
   const fetchTopTracks = async () => {
     try {
       const timeRanges = ['short_term', 'medium_term', 'long_term'];
@@ -137,7 +132,6 @@ const Playlist = () => {
         )
       );
 
-      // Combine and deduplicate tracks
       const uniqueTracks = new Set();
       tracks.forEach(response => {
         response.items?.forEach(track => uniqueTracks.add(track.id));
@@ -153,7 +147,6 @@ const Playlist = () => {
     }
   };
 
-  // Fetch saved tracks with enhanced error handling
   const fetchSavedTracks = async () => {
     try {
       setLoading(true);
@@ -183,7 +176,6 @@ const Playlist = () => {
     }
   };
 
-  // Enhanced recommendations function with improved deduplication
   const fetchRecommendations = async () => {
     try {
       setLoading(true);
@@ -236,7 +228,6 @@ const Playlist = () => {
         })
       );
 
-      // Enhanced deduplication logic
       const seenIds = new Set();
       const uniqueTracks = recommendationSets.flat().filter(track => {
         if (seenIds.has(track.id)) {
@@ -246,18 +237,15 @@ const Playlist = () => {
         return true;
       });
 
-      // Further filter out any tracks that were previously used
       const finalTracks = uniqueTracks.filter(track => 
         !usedRecommendations.has(track.id)
       );
 
-      // Update used recommendations set
       setUsedRecommendations(new Set([
         ...Array.from(usedRecommendations),
         ...finalTracks.map(track => track.id)
       ]));
 
-      // Shuffle and limit to 20 tracks
       const shuffledTracks = finalTracks
         .sort(() => Math.random() - 0.5)
         .slice(0, 20);
@@ -271,7 +259,6 @@ const Playlist = () => {
     }
   };
 
-  // Fallback function for genre-only recommendations
   const fetchGenreOnlyRecommendations = async () => {
     try {
       const audioFeatures = getAudioFeatures(activity);
@@ -305,19 +292,16 @@ const Playlist = () => {
     }
   };
 
-  // New function to save playlist
   const savePlaylistToSpotify = async () => {
     try {
       setLoading(true);
       
-      // First, get user's Spotify ID
       const userResponse = await fetch("https://api.spotify.com/v1/me", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const userData = await userResponse.json();
       const userId = userData.id;
 
-      // Create a new playlist
       const createPlaylistResponse = await fetch(
         `https://api.spotify.com/v1/users/${userId}/playlists`,
         {
@@ -336,7 +320,6 @@ const Playlist = () => {
       const newPlaylist = await createPlaylistResponse.json();
       setPlaylistId(newPlaylist.id);
 
-      // Add tracks to the playlist
       const trackUris = songs.map(song => song.uri);
       await fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
         method: 'POST',
@@ -349,7 +332,6 @@ const Playlist = () => {
         })
       });
 
-      // Generate share link
       setShareLink(newPlaylist.external_urls.spotify);
       
       alert('Playlist saved successfully!');
@@ -361,7 +343,6 @@ const Playlist = () => {
     }
   };
 
-  // Refresh playlist with enhanced recommendations
   const handleRefresh = () => {
     console.log("Refreshing playlist...");
     if (activity === "savedTracks") {
@@ -371,12 +352,10 @@ const Playlist = () => {
     }
   };
 
-  // Remove song handler
   const handleRemoveSong = (songId) => {
     setSongs(prevSongs => prevSongs.filter(song => song.id !== songId));
   };
 
-  // Handle home navigation
   const handleHomeNavigation = () => {
     navigate('/', { 
       state: { 
