@@ -88,6 +88,67 @@ const Playlist = () => {
       navigate('/');
     }
   };
+  const fetchDeviceId = async () => {
+    try {
+      const response = await fetch("https://api.spotify.com/v1/me/player/devices", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  
+      if (!response.ok) {
+        const errorBody = await response.text();
+        console.error("Error Response Body:", errorBody);
+        throw new Error(`Failed to fetch devices: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("Devices Available:", data.devices);
+  
+      if (data.devices.length === 0) {
+        alert("No active device found. Please open Spotify on a device.");
+        return null;
+      }
+  
+      setDeviceId(data.devices[0].id); 
+      console.log("Device ID set:", data.devices[0].id);
+      return data.devices[0].id;
+    } catch (error) {
+      console.error("Error fetching devices:", error);
+      alert("Failed to fetch devices. Ensure Spotify is open and connected.");
+      return null;
+    }
+  };
+  
+
+  const handlePlaySong = async (uri) => {
+    try {
+      if (!deviceId) {
+        const id = await fetchDeviceId(); 
+        if (!id) return; 
+      }
+
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ uris: [uri] }),
+        }
+      );
+
+      if (response.status === 204) {
+        console.log("Playback started for:", uri);
+      } else {
+        throw new Error(`Failed to start playback: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error starting playback:", error);
+      alert("Failed to start playback. Ensure Spotify is open and connected.");
+    }
+  };
+
 
   const fetchTopArtists = async () => {
     try {
@@ -167,6 +228,9 @@ const Playlist = () => {
       const trackIds = data.items.map(item => item.track.id);
       setLikedTracks(trackIds);
       console.log("Liked tracks fetched:", trackIds);
+      
+      setSongs(data.items.map(item => item.track));
+      
       return trackIds;
     } catch (error) {
       console.error("Error fetching saved tracks:", error);
@@ -222,38 +286,42 @@ const Playlist = () => {
             }
           );
 
+          if (response.status === 429) {
+            console.warn("Rate limit reached. Skipping this seed combination.");
+            return [];
+          }
+
           if (!response.ok) return [];
           const data = await response.json();
           return data.tracks;
         })
       );
 
-      const seenIds = new Set();
-      const uniqueTracks = recommendationSets.flat().filter(track => {
-        if (seenIds.has(track.id)) {
-          return false;
-        }
-        seenIds.add(track.id);
-        return true;
-      });
+      const uniqueTracks = recommendationSets.flat().filter((track, index, self) => 
+        index === self.findIndex((t) => t.id === track.id)
+      );
 
       const finalTracks = uniqueTracks.filter(track => 
         !usedRecommendations.has(track.id)
       );
 
-      setUsedRecommendations(new Set([
-        ...Array.from(usedRecommendations),
-        ...finalTracks.map(track => track.id)
-      ]));
+      if (finalTracks.length > 0) {
+        setUsedRecommendations(new Set([
+          ...Array.from(usedRecommendations),
+          ...finalTracks.map(track => track.id)
+        ]));
 
-      const shuffledTracks = finalTracks
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 20);
+        const shuffledTracks = finalTracks
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 20);
 
-      setSongs(shuffledTracks);
+        setSongs(shuffledTracks);
+      } else {
+        await fetchSavedTracks();
+      }
     } catch (error) {
       console.error("Error fetching recommendations:", error);
-      fetchGenreOnlyRecommendations();
+      await fetchGenreOnlyRecommendations();
     } finally {
       setLoading(false);
     }
@@ -280,13 +348,27 @@ const Playlist = () => {
         }
       );
 
-      if (!response.ok) throw new Error(`Failed to fetch recommendations: ${response.status}`);
+      if (response.status === 429) {
+        console.warn("Rate limit reached in genre recommendations. Falling back to saved tracks.");
+        await fetchSavedTracks();
+        return;
+      }
+
+      if (!response.ok) {
+        await fetchSavedTracks();
+        return;
+      }
 
       const data = await response.json();
-      setSongs(data.tracks);
+      
+      if (data.tracks.length === 0) {
+        await fetchSavedTracks();
+      } else {
+        setSongs(data.tracks);
+      }
     } catch (error) {
       console.error("Error in fallback recommendations:", error);
-      setSongs([]);
+      await fetchSavedTracks();
     } finally {
       setLoading(false);
     }
@@ -451,6 +533,9 @@ const Playlist = () => {
               />
               <p className="song-name">{song.name}</p>
               <p className="song-artist">{song.artists[0].name}</p>
+              <button className="play-button" onClick={() => handlePlaySong(song.uri)}>
+                ▶️ Play
+              </button>
               <button
                 className="remove-button"
                 onClick={() => handleRemoveSong(song.id)}
@@ -462,7 +547,7 @@ const Playlist = () => {
         </div>
       )}
 
-      <button className="refresh-button" onClick={handleRefresh}>
+     <button className="refresh-button" onClick={handleRefresh}>
         Refresh Playlist
       </button>
     </div>

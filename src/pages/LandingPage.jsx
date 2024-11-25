@@ -30,11 +30,12 @@ const LandingPage = () => {
     const clientId = "c0075612d3594ee5ab2d8f5e97152984";
     const redirectUri = "http://localhost:5173/callback";
     const scopes = [
-      "user-read-private",
+    "user-read-private",
     "playlist-modify-private",
     "playlist-read-private",
     "user-library-read",
-    "user-top-read"
+    "user-top-read",
+    "user-modify-playback-state"
     ];
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(
       redirectUri
